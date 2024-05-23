@@ -1,0 +1,33 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C/C++: g++.exe build active file",
+			"command": "C:/msys64/mingw64/bin/g++.exe",
+			"args": [
+				"-g2", // tối ưu cho code
+				"-O3", // tối ưu cho code
+				"-DNDEBUG", // thông tin về debug
+				"${file}", 
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}.exe", // lấy đầu vào tại thư mục hiện thời 
+				"-D_WIN32_WINNT=0x0A00", //set compiler cho window bản bao nhiêu (cần chỉnh bản win)
+                "-lpthread", //chạy đa luồng 
+                "-L${workspaceFolder}/lib", // chỗ file thư viện 
+                "-l:libcryptopp.a", // -lcryptopp
+                "-I${workspaceFolder}/include",
+               	"-Wall", 
+
+			],
+			"options": {
+				"cwd": "C:/msys64/mingw64/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:/msys64/mingw64/bin/g++.exe"
+		}
+	]
+}
